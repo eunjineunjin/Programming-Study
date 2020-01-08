@@ -10,7 +10,7 @@ void SelectionSort(int arr[MAXSIZE])
 		int min_index = i;
 		for(int j=i; j<MAXSIZE-1; j++)
 		{
-			if(min>arr[j+1])
+			if(min>arr[j+1])	//ascending
 			{
 				min = arr[j+1];
 				min_index = j+1;

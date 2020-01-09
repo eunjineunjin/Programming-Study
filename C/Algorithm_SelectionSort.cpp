@@ -1,7 +1,7 @@
 #include <stdio.h>
 #define MAXSIZE 6
 
-void SelectionSort(int *arr)
+void SelectionSort(int* arr)
 { 
 	for(int i=0; i<MAXSIZE-1; i++)
 	{

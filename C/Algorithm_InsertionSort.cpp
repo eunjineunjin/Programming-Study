@@ -1,7 +1,7 @@
 #include <stdio.h>
 #define MAXSIZE 6
 
-void InsertionSort(int arr[MAXSIZE])
+void InsertionSort(int* arr)
 {
 	for(int i=1; i<MAXSIZE; i++)	//key does not includet arr[0]
 	{

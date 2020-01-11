@@ -6,9 +6,9 @@ void QuickSort(int* arr, int first, int last)
 	if(first<last)
 	{
 		int pivot = arr[last];
-		int Bigger = first;	//divide from this index
+		int Bigger = first;	//Bigger numbers begin from this index (Smaller numbers begin from first)
 		
-		for(int i=first; i<last; i++)
+		for(int i=first; i<last; i++)	//Left side: Smaller than pivot, Right side: Bigger than pivot
 		{
 			if(arr[i] < pivot)
 			{
@@ -19,6 +19,7 @@ void QuickSort(int* arr, int first, int last)
 				Bigger++;
 		}
 		}
+		//pivot goes to middle
 		arr[last] = arr[Bigger];
 		arr[Bigger] = pivot;
 		Bigger++;

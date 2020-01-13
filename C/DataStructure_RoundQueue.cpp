@@ -1,16 +1,15 @@
 /*
-Radix Sort ±â¼öÁ¤·Ä
-with Round Queue 
+Round Queue
+with C language
+only for integer, based on array
 */
-
 #include <stdio.h>
 #define MAXSIZE 10
 
-//Round Queue
 typedef struct Queue{
 	int arr[MAXSIZE];
-	int front;	//frontºÎÅÍ µ¥ÀÌÅÍ Á¸Àç 
-	int rear;	//rear-1±îÁö µ¥ÀÌÅÍ Á¸Àç 
+	int front;	//frontë¶€í„° ë°ì´í„° ì¡´ì¬ 
+	int rear;	//rear-1ê¹Œì§€ ë°ì´í„° ì¡´ì¬ 
 }Queue;
 
 void Init(Queue* q)
@@ -21,14 +20,14 @@ void Init(Queue* q)
 
 int isFull(Queue* q)
 {
-	return (q->rear+1)%MAXSIZE == q->front;	//FullÀÌ¸é 1 return 	
+	return (q->rear+1)%MAXSIZE == q->front;	//Fullì´ë©´ 1 return 	
 }
 
 void Push(Queue* q, int item)
 {
 	if(isFull(q))
 	{
-		printf("Å¥°¡ °¡µæ Ã¡½À´Ï´Ù.");
+		printf("íê°€ ê°€ë“ ì°¼ìŠµë‹ˆë‹¤.");
 	}
 	else
 	{
@@ -39,14 +38,14 @@ void Push(Queue* q, int item)
 
 int isEmpty(Queue* q)
 {
-	return (q->front)==(q->rear);	//Empty¸é 1 return 
+	return (q->front)==(q->rear);	//Emptyë©´ 1 return 
 }
 
 int Pop(Queue* q)
 {
 	if(isEmpty(q))
 	{
-		printf("Å¥°¡ ºñ¾ú½À´Ï´Ù.");
+		printf("íê°€ ë¹„ì—ˆìŠµë‹ˆë‹¤.");
 	}
 	else
 	{

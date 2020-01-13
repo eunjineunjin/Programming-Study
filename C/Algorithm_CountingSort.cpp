@@ -40,7 +40,7 @@ void CountingSort(int* arr)
 	
 	//Sorting
 	int new_arr[MAXSIZE];
-	for(int i=0; i<MAXSIZE; i++)
+	for(int i=MAXSIZE-1; i>=0; i++)	//from backward
 	{
 		C_arr[arr[i]-MIN]--;
 		new_arr[C_arr[arr[i]-MIN]] = arr[i];

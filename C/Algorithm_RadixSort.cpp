@@ -76,7 +76,7 @@ void Show(Queue* q)
 /////////////////////
 
 
-///////Radix Sort/////MSB->LSB
+///////Radix Sort/////MSB<-LSB
 void RadixSort(int* arr, int size, int MSD)
 {
 	Queue Q[10];
@@ -89,12 +89,13 @@ void RadixSort(int* arr, int size, int MSD)
 	{
 		for(int j=0; j<size; j++)
 		{
-			int value = int(arr[j]/pow(10, MSD-i-1))%10;	//pow(10, i) if MSB<-LSB
+			int value = int(arr[j]/pow(10, i))%10;
 			Push(&Q[value], arr[j]);
 		}
+		
+		int index = 0;
 		for(int k=0; k<10; k++)
 		{
-			int index = 0;
 			while(!isEmpty(&Q[k]))
 			{
 				arr[index] = Pop(&Q[k]);
@@ -110,7 +111,7 @@ int main()
 {
 	int arr_size = 8;	//length of array
 	int MSD = 3;	//Most Signficant Digit
-	int arr[arr_size] = {326, 453, 608, 835, 751, 435, 704, 690};
+	int arr[arr_size] = {326, 453, 608, 835, 51, 435, 64, 7};
 	
 	RadixSort(arr, arr_size, MSD);
 	

@@ -5,6 +5,7 @@ Directed
 */
 #include <stdio.h>
 #include <stdlib.h>
+#define MAXSIZE 10
 
 typedef struct node{
 	char name;
@@ -12,12 +13,27 @@ typedef struct node{
 	node* next;
 }node;
 
-node* NewVertex(char node_name)
+typedef struct Graph{
+	node* arr[MAXSIZE];
+	int Vnum;	//Vertex number
+}Graph;
+
+void Init(Graph* G)
+{
+	G->Vnum = 0;
+}
+
+node* NewVertex(Graph* G, char node_name)
 {
 	node* NewVertex = (node*)malloc(sizeof(node));
 	NewVertex->name = node_name;
 	NewVertex->weight = NULL;
 	NewVertex->next = NULL;
+	
+	G->arr[G->Vnum] = NewVertex;
+	++(G->Vnum);
+	
+	return NewVertex;
 }
 
 void NewEdge(node* root, node* connected, int weight)	//Directed
@@ -35,27 +51,33 @@ void NewEdge(node* root, node* connected, int weight)	//Directed
 	tmp->next = NewConnected;
 }
 
-void ShowGraph(node* root)
+void ShowGraph(Graph* G)
 {
-	printf("[%c]", root->name);
-	
-	node* tmp = root->next;
-	while(tmp)
+	for(int i=0; i<G->Vnum; i++)
 	{
-		printf("\t-%d->", tmp->weight);
-		printf("%c", tmp->name);
-		tmp = tmp->next;
+		printf("[%c]", G->arr[i]->name);
+		
+		node* tmp = G->arr[i]->next;
+		while(tmp)
+		{
+			printf("\t-%d->", tmp->weight);
+			printf("%c", tmp->name);
+			tmp = tmp->next;
+		}
+		printf("\n");
 	}
-	printf("\n");
 }
 
 int main()
 {
+	Graph G;
+	Init(&G);
+	
 	//Making vertex
-	node* A = NewVertex('A');
-	node* B = NewVertex('B');
-	node* C = NewVertex('C');
-	node* D = NewVertex('D');
+	node* A = NewVertex(&G, 'A');
+	node* B = NewVertex(&G, 'B');
+	node* C = NewVertex(&G, 'C');
+	node* D = NewVertex(&G, 'D');
 	
 	//Making Edge(Directed)
 	NewEdge(A, D, 5);
@@ -65,11 +87,8 @@ int main()
 	NewEdge(D, A, 5);
 	NewEdge(D, C, 10);
 	
-	//Show
-	ShowGraph(A);
-	ShowGraph(B);
-	ShowGraph(C);
-	ShowGraph(D);
+	//Print
+	ShowGraph(&G);
 }
 
 

@@ -71,7 +71,7 @@ void ShowGraph(Graph* G)
 		node* tmp = G->arr[i]->next;
 		while(tmp)
 		{
-			printf("\t->%c", tmp->name);
+			printf(" ~%c", tmp->name);
 			tmp = tmp->next;
 		}
 		printf("\n");
@@ -168,35 +168,37 @@ void BFS(Graph* G)
 		}
 	}
 	
+	printf("\nVisiting Order: %c", spn);
 	while(!isEmpty(&Q))
 	{
-		
 		int now = Pop(&Q);
 		node* tmp = G->arr[now];
-		printf("%c ", tmp->name);
 		while (tmp->next)
 		{
 			//Finding index in Graph
-			for(int i=0; i=G->Vnum; i++)
+			for(int i=0; i<G->Vnum; i++)
 			{
 				if(tmp->next->name == G->arr[i]->name)
 				{
-					if(G->visited[i]!=0)
+					if(G->visited[i]==0)
 					{
 						G->visited[i] = G->visited[now]+1;
 						Push(&Q, i);
+						printf(" ->%c", G->arr[i]->name);
 					}
 				}
 			}
+			tmp = tmp->next;
 		}
 	}
-	/*
+	
+	printf("\n\nDistance from Vertex %c\n", spn);
 	for(int i=0; i<G->Vnum; i++)
 	{
 		printf("[%c] ", G->arr[i]->name);
-		printf("%d", G->visited[i]);
+		printf("%d", G->visited[i]-1);
 		printf("\n");
-	}*/
+	}
 }
 
 

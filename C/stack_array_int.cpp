@@ -29,17 +29,17 @@ public:
       return;
     }
 
-		m_top--;
+    m_top--;
   }
 
   auto peek() -> int
   {
-		return m_arr[m_top];
+    return m_arr[m_top];
   }
 
   auto top() -> int
   {
-		return peek();
+    return peek();
   }
 
   auto is_full() const -> bool 

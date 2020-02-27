@@ -61,7 +61,7 @@ private:
 
 int main()
 {
-	Stack s;
+  Stack s;
   s.push(1).push(2).push(3);
   s.pop();
 
